@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot name="urdf_assembly">
+    <link name="link1">
+        <inertial>
+            <origin xyz="-2.4193e-05 0.00409156 0.07161775" rpy="0.0 0.0 0.0" />
+            <mass value="0.290532" />
+            <inertia ixx="0.0004375" iyy="0.0004333" izz="0.0002321" ixy="0.0" iyz="0.0" ixz="0.0" />
+        </inertial>
+        <visual name="link1_visual">
+            <origin xyz="0.0 0.0 -0.1164" rpy="0.0 0.0 2.70526" />
+            <geometry>
+                <mesh filename="package://robot_description/meshes/link1.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </visual>
+        <collision name="link1_collision">
+            <origin xyz="0.0 0.0 -0.1164" rpy="0.0 0.0 2.70526" />
+            <geometry>
+                <mesh filename="package://robot_description/meshes/link1.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+    
+    <link name="base_link">
+        <inertial>
+            <origin xyz="-0.00873842 0.482056 0.419654" rpy="0.0 0.0 0.0" />
+            <mass value="516.651" />
+            <inertia ixx="219.638" iyy="189.671" izz="142.006" ixy="0.0" iyz="0.0" ixz="0.0" />
+        </inertial>
+        <visual name="base_link_visual">
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+            <geometry>
+                <mesh filename="package://robot_description/meshes/base_link.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </visual>
+        <collision name="base_link_collision">
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+            <geometry>
+                <mesh filename="package://robot_description/meshes/base_link.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+    
+    <link name="link2">
+        <inertial>
+            <origin xyz="-0.009765 -0.0774268 0.029983" rpy="0.0 0.0 0.0" />
+            <mass value="0.308651" />
+            <inertia ixx="0.000893" iyy="0.0004067" izz="0.0007258" ixy="0.0" iyz="0.0" ixz="0.0" />
+        </inertial>
+        <visual name="link2_visual">
+            <origin xyz="-0.205744 0.000535 -0.046408" rpy="1.10367 0.392741 1.38016" />
+            <geometry>
+                <mesh filename="package://robot_description/meshes/link2.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </visual>
+        <collision name="link2_collision">
+            <origin xyz="-0.205744 0.000535 -0.046408" rpy="1.10367 0.392741 1.38016" />
+            <geometry>
+                <mesh filename="package://robot_description/meshes/link2.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+    
+    <link name="link3">
+        <inertial>
+            <origin xyz="0.00547344 0.170974 -0.00741884" rpy="0.0 0.0 0.0" />
+            <mass value="0.352895" />
+            <inertia ixx="0.001845" iyy="0.0002256" izz="0.0018216" ixy="0.0" iyz="0.0" ixz="0.0" />
+        </inertial>
+        <visual name="link3_visual">
+            <origin xyz="-0.157914 -0.139024 -0.131216" rpy="-0.90899 -0.339575 -1.82062" />
+            <geometry>
+                <mesh filename="package://robot_description/meshes/link3.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </visual>
+        <collision name="link3_collision">
+            <origin xyz="-0.157914 -0.139024 -0.131216" rpy="-0.90899 -0.339575 -1.82062" />
+            <geometry>
+                <mesh filename="package://robot_description/meshes/link3.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+    
+    <link name="link4">
+        <inertial>
+            <origin xyz="-0.088076 0.112805 -0.297028" rpy="0.0 0.0 0.0" />
+            <mass value="1.699297" />
+            <inertia ixx="0.0516542" iyy="0.0460101" izz="0.00992565" ixy="0.0" iyz="0.0" ixz="0.0" />
+        </inertial>
+        <visual name="link4_visual">
+            <origin xyz="-0.254957 0.280758 -0.20336" rpy="1.2372 0.931868 1.50456" />
+            <geometry>
+                <mesh filename="package://robot_description/meshes/link4.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </visual>
+        <collision name="link4_collision">
+            <origin xyz="-0.254957 0.280758 -0.20336" rpy="1.2372 0.931868 1.50456" />
+            <geometry>
+                <mesh filename="package://robot_description/meshes/link4.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+    
+    <joint name="Obrot-6" type="continuous">
+        <origin xyz="-0.244107 0.015 1.3749" rpy="0.0 1.0472 -3.1416" />
+        <parent link="base_link" />
+        <child link="link1" />
+        <axis xyz="0.0 0.0 1.0" />
+    </joint>
+    
+    <joint name="Obrot-7" type="continuous">
+        <origin xyz="0.00062907 0.0433954 0.09" rpy="0.953945 -0.910985 0.731463" />
+        <parent link="link1" />
+        <child link="link2" />
+        <axis xyz="0.0 0.0 1.0" />
+    </joint>
+    
+    <joint name="Obrot-8" type="continuous">
+        <origin xyz="-0.0136299 -0.138027 0.0269033" rpy="1.5708 -1.55135 1.56207" />
+        <parent link="link2" />
+        <child link="link3" />
+        <axis xyz="0.0 1.0 0.0" />
+    </joint>
+    
+    <joint name="Obrot-9" type="continuous">
+        <origin xyz="0.011286 0.225263 0.026085" rpy="1.5708 -1.18817 -0.458778" />
+        <parent link="link3" />
+        <child link="link4" />
+        <axis xyz="1.0 0.0 0.0" />
+    </joint>
+</robot>

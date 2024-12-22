@@ -1,0 +1,162 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="urdf_assembly">
+
+  <!-- Definicje zmiennych -->
+  <xacro:property name="scale" value="0.001 0.001 0.001" />
+
+  <!-- Makro dla powtarzających się elementów wizualnych i kolizyjnych -->
+  <xacro:macro name="link_component" params="name mesh_filename origin_xyz origin_rpy">
+    <visual name="${name}_visual">
+      <origin xyz="${origin_xyz}" rpy="${origin_rpy}" />
+      <geometry>
+        <mesh filename="${mesh_filename}" scale="$(arg scale)" />
+      </geometry>
+    </visual>
+    <collision name="${name}_collision">
+      <origin xyz="${origin_xyz}" rpy="${origin_rpy}" />
+      <geometry>
+        <mesh filename="${mesh_filename}" scale="$(arg scale)" />
+      </geometry>
+    </collision>
+  </xacro:macro>
+
+  <!-- Linki -->
+  <link name="link1_R">
+    <inertial>
+      <origin xyz="-2.4193385746684727e-05 0.00409156137890542 0.07161775119546349" rpy="0.0 -0.0 0.0" />
+      <mass value="0.2905321473038439" />
+      <inertia ixx="0.00043753563831849704" iyy="0.00043334665657479565" izz="0.00023205965482227367" ixy="-6.978993660813407e-07" iyz="-2.1766445686435926e-05" ixz="-4.993600913617813e-08" />
+    </inertial>
+    <xacro:link_component name="link1_R" mesh_filename="package://robot_description/meshes/link1_R.stl" origin_xyz="-2.5371946321683937e-09 6.022573195707536e-10 -0.11640000312442553" origin_rpy="-3.267106030158122e-11 1.976196983832776e-14 2.705260340591211" />
+  </link>
+
+  <link name="base_link">
+    <inertial>
+      <origin xyz="-0.00873842445710318 0.48205629537494693 0.4196545707824189" rpy="0.0 0.0 0.0" />
+      <mass value="516.6514723698799" />
+      <inertia ixx="219.63823961016618" iyy="189.6710064664104" izz="142.0061352516364" ixy="1.56389856691977" iyz="80.14701730263339" ixz="-1.2596113929854116" />
+    </inertial>
+    <xacro:link_component name="base_link" mesh_filename="package://robot_description/meshes/base_link.stl" origin_xyz="0.0 0.0 0.0" origin_rpy="0.0 0.0 0.0" />
+  </link>
+
+  <link name="link2_R">
+    <inertial>
+      <origin xyz="-0.00976538548197741 -0.07742675312151619 0.029982979933191524" rpy="0.0 3.9853149662245715e-22 0.0" />
+      <mass value="0.30865123883363765" />
+      <inertia ixx="0.000893019669600996" iyy="0.000406664052939421" izz="0.0007257732019188511" ixy="-2.0007447912801714e-05" iyz="3.497579979554558e-05" ixz="9.057938747361674e-05" />
+    </inertial>
+    <xacro:link_component name="link2_R" mesh_filename="package://robot_description/meshes/link2_R.stl" origin_xyz="-0.20574389329865794 0.000535402955777613 -0.04640781663362376" origin_rpy="1.1036672995749868 0.3927413892930476 1.3801619051893566" />
+  </link>
+
+  <link name="link3_R">
+    <inertial>
+      <origin xyz="0.005473435521785106 0.17097400733111598 -0.007418842502801617" rpy="0.0 3.144186300207963e-18 0.0" />
+      <mass value="0.3528953881849687" />
+      <inertia ixx="0.0018450395586717377" iyy="0.00022558888780152935" izz="0.0018216150882152044" ixy="0.00012465016753974512" iyz="-7.196850745537169e-06" ixz="-2.6156615141024857e-05" />
+    </inertial>
+    <xacro:link_component name="link3_R" mesh_filename="package://robot_description/meshes/link3_R.stl" origin_xyz="-0.157913648821032 -0.1390237053413577 -0.13121604491455563" origin_rpy="-0.908989776848435 -0.3395750591939968 -1.8206193370329844" />
+  </link>
+
+  <link name="link4_R">
+    <inertial>
+      <origin xyz="-0.0880763067565718 0.11280477972534676 -0.297027696713218" rpy="0.0 -0.0 0.0" />
+      <mass value="1.6992965767024981" />
+      <inertia ixx="0.051654240149548725" iyy="0.04601012576957093" izz="0.00992564961992205" ixy="0.0035174787082349565" iyz="0.017914420747038914" ixz="-0.008504988343687177" />
+    </inertial>
+    <xacro:link_component name="link4_R" mesh_filename="package://robot_description/meshes/link4_R.stl" origin_xyz="-0.2549565608132793 0.28075760995347454 -0.20336011543597807" origin_rpy="1.2371989824089813 0.9318680496078335 1.504555849153226" />
+  </link>
+
+  <link name="link1_L">
+    <inertial>
+      <origin xyz="-2.419090223185094e-05 0.0040915613810245735 0.07161775119534099" rpy="0.0 -0.0 0.0" />
+      <mass value="0.2905321473038439" />
+      <inertia ixx="0.0004375356383183129" iyy="0.0004333466565729083" izz="0.00023205965482290188" ixy="-6.978993663815546e-07" iyz="-2.176644569238662e-05" ixz="-4.993601243383325e-08" />
+    </inertial>
+    <xacro:link_component name="link1_L" mesh_filename="package://robot_description/meshes/link1_L.stl" origin_xyz="-5.627811106023728e-11 5.988109386123597e-10 -0.1164000031244278" origin_rpy="-4.996003610813206e-16 -1.665334536937729e-16 2.7052603405912117" />
+  </link>
+
+  <link name="link2_L">
+    <inertial>
+      <origin xyz="-0.008959069414034779 0.07818911798220114 -0.028203578395554648" rpy="0.0 -0.0 0.0" />
+      <mass value="0.30865123883363765" />
+      <inertia ixx="0.0008934034129444968" iyy="0.0004048267354716112" izz="0.0007272267760425634" ixy="1.7018292181996898e-05" iyz="2.8574164218541432e-05" ixz="-8.982662400667537e-05" />
+    </inertial>
+    <xacro:link_component name="link2_L" mesh_filename="package://robot_description/meshes/link2_L.stl" origin_xyz="-0.20574389305229304 0.0005353991703748307 0.04640781648980418" origin_rpy="-2.0334025651258645 -0.370262074887406 -1.3922087211975844" />
+  </link>
+
+  <link name="link3_L">
+    <inertial>
+      <origin xyz="0.0021142915024112874 -0.17113718870152597 0.004970015155139862" rpy="0.0 5.236696493104985e-17 0.0" />
+      <mass value="0.3528953881849687" />
+      <inertia ixx="0.001842703534462492" iyy="0.0002324156244245426" izz="0.0018171243758027496" ixy="-0.00016273871757888265" iyz="-1.488913650832922e-05" ixz="2.1961502290756313e-05" />
+    </inertial>
+    <xacro:link_component name="link3_L" mesh_filename="package://robot_description/meshes/link3_L.stl" origin_xyz="-0.1426205860897198 0.1407333555676655 0.14606660385528775" origin_rpy="2.31843203609107 0.3058167418765026 1.8250585126177694" />
+  </link>
+
+  <link name="link4_L">
+    <inertial>
+      <origin xyz="-0.0853280732244556 -0.11826789795946695 0.2957019220333888" rpy="5.551115123125783e-17 2.775557561562892e-17 0.0" />
+      <mass value="1.6992965767024981" />
+      <inertia ixx="0.05176232822682359" iyy="0.04506833183599175" izz="0.010759355476227236" ixy="-0.0036047064213234462" iyz="0.01884125243333611" ixz="0.008143965110224213" />
+    </inertial>
+    <xacro:link_component name="link4_L" mesh_filename="package://robot_description/meshes/link4_L.stl" origin_xyz="-0.2673593136981753 -0.2698044251360261 0.20225623416677338" origin_rpy="-1.9622698476282834 -0.8902316361221261 -1.5315722154623232" />
+  </link>
+
+  <!-- Joints -->
+  <joint name="rotation-6" type="continuous">
+    <origin xyz="-0.2441066300000001 0.01500000000000002 1.3748987300000002" rpy="-5.551115123125993e-17 1.0471975511966198 -3.141592653589793" />
+    <parent link="base_link" />
+    <child link="link1_R" />
+    <axis xyz="-2.018922412028168e-07 1.48139587715686e-49 0.9999996503124187" />
+  </joint>
+
+  <joint name="rotation-7" type="continuous">
+    <origin xyz="0.0006290688094259167 0.04339544 0.08999999913938624" rpy="0.9539450050874189 -0.9109853487755191 0.7314631306193936" />
+    <parent link="link1_R" />
+    <child link="link2_R" />
+    <axis xyz="-0.4160060205695197 0.012552999967340184 0.9092752723376636" />
+  </joint>
+
+  <joint name="rotation-8" type="continuous">
+    <origin xyz="-0.013629873522906096 -0.13802738000098402 0.026903301671795728" rpy="1.570796326795875 -1.551353669612284 1.5620696805339125" />
+    <parent link="link2_R" />
+    <child link="link3_R" />
+    <axis xyz="-0.011639528345018444 0.9999230878951888 -0.004390470937833131" />
+  </joint>
+
+  <joint name="rotation-9" type="continuous">
+    <origin xyz="0.011285983082800577 0.22526331375483963 0.02608533621794905" rpy="1.5707963267949412 -1.188168268029673 -0.45877755786384566" />
+    <parent link="link3_R" />
+    <child link="link4_R" />
+    <axis xyz="0.9765801478265517 -0.04409612647682489 -0.21058594844578482" />
+  </joint>
+
+  <joint name="rotation-10" type="continuous">
+    <origin xyz="0.2441066299999999 0.015000000000000046 1.3748987300000002" rpy="-5.5511151231255695e-17 -1.0471975511965756 -3.141592653589793" />
+    <parent link="base_link" />
+    <child link="link1_L" />
+    <axis xyz="2.0189219712696271e-07 -1.48139587715686e-49 0.9999996503124187" />
+  </joint>
+
+  <joint name="rotation-11" type="continuous">
+    <origin xyz="0.0006290701500256546 0.04339544 0.08999999853862747" rpy="-0.953945005107295 0.9109853487863953 0.7314631306319763" />
+    <parent link="link1_L" />
+    <child link="link2_L" />
+    <axis xyz="0.4160060205693518 -0.012553 0.9092752723372896" />
+  </joint>
+
+  <joint name="rotation-12" type="continuous">
+    <origin xyz="-0.0121958177725703 0.13874027000000014 -0.02373858282422013" rpy="1.5707963267825018 1.5513536695824852 -1.5620696805339183" />
+    <parent link="link2_L" />
+    <child link="link3_L" />
+    <axis xyz="0.03449951014083652 0.9993871355309667 0.005970662463400102" />
+  </joint>
+
+  <joint name="rotation-13" type="continuous">
+    <origin xyz="0.002955894127293064 -0.22507493080785296 -0.02764236609769334" rpy="1.5707963267949412 1.1881682680296732 0.4587775578638458" />
+    <parent link="link3_L" />
+    <child link="link4_L" />
+    <axis xyz="-0.9841517837264497 0.03490526015061609 -0.17385634498017472" />
+  </joint>
+
+</robot>
