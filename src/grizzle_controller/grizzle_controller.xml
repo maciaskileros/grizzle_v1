@@ -1,0 +1,10 @@
+<library path="grizzle_controller">
+    <class name="grizzle_controller/GrizzleInterface"
+      type="grizzle_controller::GrizzleInterface"
+      base_class_type="hardware_interface::SystemInterface"
+    >
+      <description>
+        Grizzle Hardware Interface
+      </description>
+    </class>
+  </library>

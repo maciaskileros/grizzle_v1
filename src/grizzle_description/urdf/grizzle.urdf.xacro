@@ -1,0 +1,293 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="grizzle">
+    
+
+    
+
+    <!-- Start GZ or Ignition depending on ROS 2 Version -->
+    <xacro:arg name="is_ignition" default="true"/>
+  
+    <xacro:arg name="is_sim" default="true"/>
+
+    <!-- Include Gazebo Parameters -->
+    <xacro:include filename="$(find grizzle_description)/urdf/grizzle_gazebo.xacro" />
+
+    <!-- Include ros2_control Plugins -->
+    <xacro:include filename="$(find grizzle_description)/urdf/grizzle_ros2_control.xacro" />
+
+
+    <!-- Useful XACRO Variables (Properties) -->
+    <xacro:property name="PI" value="3.14159265359" />
+    <xacro:property name="effort" value="30.0" />
+    <xacro:property name="velocity" value="10.0" />
+
+    <material name="Grey">
+    <color rgba="0.5 0.5 0.5 1.0"/>
+    </material>
+    
+
+    <!-- Links -->
+    <link name="world"/>
+
+    <link name="base_link">
+    <inertial>
+        <origin xyz="-0.00873842445710307 0.4820562953749469 0.449654570782419" rpy="0 0 0"/>
+        <mass value="516.6514723698799"/>
+        <inertia ixx="219.63824" iyy="189.671006" izz="142.006135" ixy="1.563899" iyz="80.147017" ixz="-1.259611"/>
+    </inertial>
+    <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+        <mesh filename="file://$(find grizzle_description)/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+        </geometry>
+        <material name="Grey"/>
+    </visual>
+    <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+        <mesh filename="file://$(find grizzle_description)/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+        </geometry>
+    </collision>
+    </link>
+
+    <link name="link1_r_1">
+    <inertial>
+        <origin xyz="-0.06201032520431224 -0.00409156137890542 0.035829557684390556" rpy="0 0 0"/>
+        <mass value="0.2905321473038439"/>
+        <inertia ixx="0.000283" iyy="0.000433" izz="0.000386" ixy="-1.9e-05" iyz="1e-05" ixz="8.9e-05"/>
+    </inertial>
+    <visual>
+        <origin xyz="0.244107 -0.015 -1.404899" rpy="0 0 0"/>
+        <geometry>
+        <mesh filename="file://$(find grizzle_description)/meshes/link1_r_1.stl" scale="0.001 0.001 0.001"/>
+        </geometry>
+         <material name="Grey"/>
+    </visual>
+    <collision>
+        <origin xyz="0.244107 -0.015 -1.404899" rpy="0 0 0"/>
+        <geometry>
+        <mesh filename="file://$(find grizzle_description)/meshes/link1_r_1.stl" scale="0.001 0.001 0.001"/>
+        </geometry>
+    </collision>
+    </link>
+
+    <link name="link2_r_1">
+    <inertial>
+        <origin xyz="-0.0033672654350700437 0.03135249276984688 -0.07742681312049227" rpy="0 0 0"/>
+        <mass value="0.30865123883363765"/>
+        <inertia ixx="0.000933" iyy="0.000686" izz="0.000407" ixy="2e-06" iyz="4e-05" ixz="4e-06"/>
+    </inertial>
+    <visual>
+        <origin xyz="0.322363 0.028395 -1.449354" rpy="0 0 0"/>
+        <geometry>
+        <mesh filename="file://$(find grizzle_description)/meshes/link2_r_1.stl" scale="0.001 0.001 0.001"/>
+        </geometry>
+         <material name="Grey"/>
+    </visual>
+    <collision>
+        <origin xyz="0.322363 0.028395 -1.449354" rpy="0 0 0"/>
+        <geometry>
+        <mesh filename="file://$(find grizzle_description)/meshes/link2_r_1.stl" scale="0.001 0.001 0.001"/>
+        </geometry>
+    </collision>
+    </link>
+
+    <link name="link3_r_1">
+    <inertial>
+        <origin xyz="0.004527173855665534 0.011673148921524643 -0.17076447571257436" rpy="0 0 0"/>
+        <mass value="0.3528953881849687"/>
+        <inertia ixx="0.001806" iyy="0.001865" izz="0.000221" ixy="8e-06" iyz="-8.2e-05" ixz="4.5e-05"/>
+    </inertial>
+    <visual>
+        <origin xyz="0.320944 -0.00173 -1.311327" rpy="0 0 0"/>
+        <geometry>
+        <mesh filename="file://$(find grizzle_description)/meshes/link3_r_1.stl" scale="0.001 0.001 0.001"/>
+        </geometry>
+         <material name="Grey"/>
+    </visual>
+    <collision>
+        <origin xyz="0.320944 -0.00173 -1.311327" rpy="0 0 0"/>
+        <geometry>
+        <mesh filename="file://$(find grizzle_description)/meshes/link3_r_1.stl" scale="0.001 0.001 0.001"/>
+        </geometry>
+    </collision>
+    </link>
+
+    <link name="link4_r_1">
+    <inertial>
+        <origin xyz="0.03274834633041085 0.030688280369705948 -0.32663967952945727" rpy="0 0 0"/>
+        <mass value="1.6992965767024981"/>
+        <inertia ixx="0.053315" iyy="0.053204" izz="0.001071" ixy="-2.7e-05" iyz="0.003158" ixz="0.000545"/>
+    </inertial>
+    <visual>
+        <origin xyz="0.349363 -0.006144 -1.086106" rpy="0 0 0"/>
+        <geometry>
+        <mesh filename="file://$(find grizzle_description)/meshes/link4_r_1.stl" scale="0.001 0.001 0.001"/>
+        </geometry>
+         <material name="Grey"/>
+    </visual>
+    <collision>
+        <origin xyz="0.349363 -0.006144 -1.086106" rpy="0 0 0"/>
+        <geometry>
+        <mesh filename="file://$(find grizzle_description)/meshes/link4_r_1.stl" scale="0.001 0.001 0.001"/>
+        </geometry>
+    </collision>
+    </link>
+
+    <link name="link1_l_1">
+    <inertial>
+        <origin xyz="0.0620345173481939 -0.0040915613810245735 0.035787655661798645" rpy="0 0 0"/>
+        <mass value="0.2905321473038439"/>
+        <inertia ixx="0.000283" iyy="0.000433" izz="0.000386" ixy="1.9e-05" iyz="1.1e-05" ixz="-8.9e-05"/>
+    </inertial>
+    <visual>
+        <origin xyz="-0.244107 -0.015 -1.404899" rpy="0 0 0"/>
+        <geometry>
+        <mesh filename="file://$(find grizzle_description)/meshes/link1_l_1.stl" scale="0.001 0.001 0.001"/>
+        </geometry>
+        <material name="Grey"/>
+    </visual>
+    <collision>
+        <origin xyz="-0.244107 -0.015 -1.404899" rpy="0 0 0"/>
+        <geometry>
+        <mesh filename="file://$(find grizzle_description)/meshes/link1_l_1.stl" scale="0.001 0.001 0.001"/>
+        </geometry>
+    </collision>
+    </link>
+
+    <link name="link2_l_1">
+    <inertial>
+        <origin xyz="-0.0033735150791840973 0.029398940794063456 -0.07818959798220115" rpy="0 0 0"/>
+        <mass value="0.30865123883363765"/>
+        <inertia ixx="0.000933" iyy="0.000688" izz="0.000405" ixy="2e-06" iyz="3.3e-05" ixz="4e-06"/>
+    </inertial>
+    <visual>
+        <origin xyz="-0.321734 0.028395 -1.450444" rpy="0 0 0"/>
+        <geometry>
+        <mesh filename="file://$(find grizzle_description)/meshes/link2_l_1.stl" scale="0.001 0.001 0.001"/>
+        </geometry>
+        <material name="Grey"/>
+    </visual>
+    <collision>
+        <origin xyz="-0.321734 0.028395 -1.450444" rpy="0 0 0"/>
+        <geometry>
+        <mesh filename="file://$(find grizzle_description)/meshes/link2_l_1.stl" scale="0.001 0.001 0.001"/>
+        </geometry>
+    </collision>
+    </link>
+
+<link name="link3_l_1">
+  <inertial>
+    <origin xyz="0.0036679588842943867 0.0076097101176430095 -0.17101360389217812" rpy="0 0 0"/>
+    <mass value="0.3528953881849687"/>
+    <inertia ixx="0.001805" iyy="0.001861" izz="0.000227" ixy="4e-06" iyz="-0.00012" ixz="5.3e-05"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.323142 0.001744 -1.311703" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find grizzle_description)/meshes/link3_l_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="Grey"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.323142 0.001744 -1.311703" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find grizzle_description)/meshes/link3_l_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="link4_l_1">
+  <inertial>
+    <origin xyz="0.030286169916921124 0.024980416042381052 -0.32736327744800087" rpy="0 0 0"/>
+    <mass value="1.6992965767024981"/>
+    <inertia ixx="0.053319" iyy="0.05333" izz="0.000941" ixy="-1.2e-05" iyz="0.001844" ixz="0.000322"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.296713 0.005569 -1.086496" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find grizzle_description)/meshes/link4_l_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="Grey"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.296713 0.005569 -1.086496" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find grizzle_description)/meshes/link4_l_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+    
+    <!-- Joints -->  
+    <joint name="virtual_joint" type="fixed">
+        <parent link="world"/>
+        <child link="base_link"/>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+    </joint> 
+
+    <joint name ="joint_1" type="continuous">
+        <origin xyz="-0.244107 0.015 1.404899" rpy="0 0 0"/>
+        <parent link="base_link"/>
+        <child link="link1_r_1"/>
+        <axis xyz="-0.866025 -0.0 0.5"/>
+        <limit effort="${effort}" velocity="${velocity}"/>
+    </joint>
+
+    <joint name ="joint_2" type="continuous">
+        <origin xyz="-0.078256 -0.043395 0.044455" rpy="0 0 0"/>
+        <parent link="link1_r_1"/>
+        <child link="link2_r_1"/>
+        <axis xyz="0.007247 0.999895 0.012553"/>
+        <limit effort="${effort}" velocity="${velocity}"/>
+    </joint>
+
+    <joint name ="joint_3" type="continuous">
+        <origin xyz="0.001419 0.030125 -0.138027" rpy="0 0 0"/>
+        <parent link="link2_r_1"/>
+        <child link="link3_r_1"/>
+        <axis xyz="0.008772 0.012489 -0.999884"/>
+        <limit effort="${effort}" velocity="${velocity}"/>
+    </joint>
+
+    <joint name ="joint_4" type="continuous">
+        <origin xyz="-0.028419 0.004414 -0.225221" rpy="0 0 0"/>
+        <parent link="link3_r_1"/>
+        <child link="link4_r_1"/>
+        <axis xyz="-0.998577 0.052707 -0.008102"/>
+        <limit effort="${effort}" velocity="${velocity}"/>
+    </joint>
+
+    <joint name ="joint_5" type="continuous">
+        <origin xyz="0.244107 0.015 1.404899" rpy="0 0 0"/>
+        <parent link="base_link"/>
+        <child link="link1_l_1"/>
+        <axis xyz="0.866025 -0.0 0.5"/>
+        <limit effort="${effort}" velocity="${velocity}"/>
+    </joint>
+
+    <joint name="joint_6" type="continuous">
+        <origin xyz="0.077627 -0.043395 0.045545" rpy="0 0 0"/>
+        <parent link="link1_l_1"/>
+        <child link="link2_l_1"/>
+        <axis xyz="-0.007247 -0.999895 0.012553"/>
+        <limit effort="${effort}" velocity="${velocity}"/>
+    </joint>
+
+    <joint name="joint_7" type="continuous">
+        <origin xyz="0.001408 0.026651 -0.138741" rpy="0 0 0"/>
+        <parent link="link2_l_1"/>
+        <child link="link3_l_1"/>
+        <axis xyz="-0.008681 0.012615 0.999883"/>
+        <limit effort="${effort}" velocity="${velocity}"/>
+    </joint>
+
+    <joint name="joint_8" type="continuous">
+        <origin xyz="-0.026429 -0.003825 -0.225207" rpy="0 0 0"/>
+        <parent link="link3_l_1"/>
+        <child link="link4_l_1"/>
+        <axis xyz="0.999362 0.03474 0.008238"/>
+        <limit effort="${effort}" velocity="${velocity}"/>
+    </joint>
+
+</robot>
